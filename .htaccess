@@ -1,0 +1,46 @@
+RewriteEngine On
+
+
+RewriteRule "trang-chu" "index.php"
+RewriteRule "lien-he" "contact.php"
+
+
+RewriteRule "cac-tour" "allproduct.php"
+RewriteRule ^cac-bai-viet-([-a-zA-Z0-9]+)/?$ allblogs.php?trang=$1 [NC,L]
+RewriteRule "cac-bai-viet" "allblogs.php"
+RewriteRule "doi-mat-khau" "changepassword.php"
+RewriteRule "tim-kiem" "search.php"
+RewriteRule "cam-on-quy-khach" "success.php"
+RewriteRule "dang-nhap" "login.php"
+RewriteRule "dang-ky-thanh-vien" "regist.php"
+RewriteRule "thong-tin-thanh-vien" "profile.php"
+RewriteRule "xin-chao" "order.php"
+RewriteRule "tour-da-dat" "orderdetails.php"
+RewriteRule "lich-su-dat-tour" "history.php"
+
+RewriteRule ^([-a-zA-Z0-9]+)/?$ productcategory.php?url=$1 [NC,L]
+
+
+RewriteRule ^tour/([-a-zA-Z0-9]+)/?$ productdetails.php?url=$1 [NC,L]
+
+RewriteRule ^tin-tuc/([-a-zA-Z0-9]+)/?$ blogdetails.php?url=$1 [NC,L]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,136 @@
+/* CSS cho các hiệu ứng animation */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
+
+/* Hiệu ứng hover cho các phần tử */
+.hover-effect {
+    transition: all 0.3s ease;
+}
+
+.hover-effect.hover-active {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Hiệu ứng cho tiêu đề - Sửa để luôn giữ nguyên trạng thái visible */
+.animate-title {
+    overflow: hidden;
+}
+
+.animate-title span {
+    display: inline-block;
+    transform: translateY(0); /* Bỏ transform ban đầu */
+    opacity: 1; /* Luôn hiển thị */
+    transition: transform 0.5s ease;
+}
+
+/* Hiệu ứng cho hình ảnh */
+.img-zoom {
+    overflow: hidden;
+}
+
+.img-zoom img {
+    transition: transform 0.5s ease;
+}
+
+.img-zoom:hover img {
+    transform: scale(1.05);
+}
+
+/* Hiệu ứng cho nút */
+.btn-animate {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-animate:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.btn-animate:hover:after {
+    height: 100%;
+}
+
+/* Hiệu ứng parallax */
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Hiệu ứng cho section */
+.section-animate {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-animate:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+    transition: height 0.5s ease;
+    z-index: 0;
+}
+
+.section-animate:hover:before {
+    height: 100%;
+}
+
+/* Hiệu ứng glow cho text */
+.text-glow {
+    text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    transition: all 0.3s ease;
+}
+
+.text-glow:hover {
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+/* Hiệu ứng typing cho text - Chỉ chạy một lần */
+.typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    width: 100%; /* Đã đạt trạng thái cuối cùng */
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black; }
+}
+
+/* Hiệu ứng lazy loading cho hình ảnh */
+.lazy-load {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img:not(.lazy-load) {
+    opacity: 1;
+} 
