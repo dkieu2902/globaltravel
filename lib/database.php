@@ -1,74 +1,26 @@
 <?php
-	$filepath = realpath(dirname(__FILE__));
-include_once ($filepath.'/../config/config.php');
-?>
+class database {
+    private $conn;
 
-<?php
-Class database{
-public $host = first;
-public $user = second;
-public $pass = third;
-public $dbname = fourth;
+    public function __construct() {
+        // Lấy thông tin từ Environment Variables trên Render
+        $host = getenv('DB_HOST');        // trolley.proxy.rlwy.net
+        $user = getenv('DB_USER');        // root
+        $pass = getenv('DB_PASSWORD');    // mật khẩu Railway
+        $name = getenv('DB_NAME');        // railway
+        $port = getenv('DB_PORT');        // 41287
 
-public $link;
-public $error;
+        // Bật chế độ báo lỗi để dễ debug
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-public function __construct(){
-$this->connectDB();
-}
+        // Kết nối MySQL
+        $this->conn = new mysqli($host, $user, $pass, $name, (int)$port);
 
-private function connectDB(){
-$this->link = new mysqli($this->host, $this->user, $this->pass,
-$this->dbname);
-if(!$this->link){
-$this->error ="Connection fail".$this->link->connect_error;
-return false;
-}
-}
+        // Đặt charset cho database
+        $this->conn->set_charset('utf8mb4');
+    }
 
-// Select or Read data
-public function select($query){
-$result = $this->link->query($query) or
-die($this->link->error.__LINE__);
-if($result->num_rows > 0){
-return $result;
-} else {
-return false;
-}
-}
-
-// Insert data
-public function insert($query){
-$insert_row = $this->link->query($query) or
-die($this->link->error.__LINE__);
-if($insert_row){
-return $insert_row;
-} else {
-return false;
-}
-}
-
-// Update data
-public function update($query){
-$update_row = $this->link->query($query) or
-
-die($this->link->error.__LINE__);
-if($update_row){
-return $update_row;
-} else {
-return false;
-}
-}
-
-// Delete data
-public function delete($query){
-$delete_row = $this->link->query($query) or
-die($this->link->error.__LINE__);
-if($delete_row){
-return $delete_row;
-} else {
-return false;
-}
-}
-
+    public function getConnection() {
+        return $this->conn;
+    }
 }
